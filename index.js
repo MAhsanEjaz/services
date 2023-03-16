@@ -17,7 +17,7 @@ app.use('/routes',Router);
 
 
 
-mongoose.connect(process.env.DATABASE,(err)=>{
+mongoose.connect(process.env.DATABASE||'mongodb+srv://kuza:kuza12345@cluster0.kpotsvr.mongodb.net/?retryWrites=true&w=majority',(err)=>{
     if(!err){
         console.log('Connected');
     }else{

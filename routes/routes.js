@@ -17,7 +17,7 @@ const client = twilio(accountSid, authToken);
 
 
 
-MongoClient.connect( process.env.DATABASE, function(err, client) {
+MongoClient.connect(process.env.DATABASE || 'mongodb+srv://kuza:kuza12345@cluster0.kpotsvr.mongodb.net/?retryWrites=true&w=majority', function(err, client) {
   if (err) throw err;
   console.log('Connected to MongoDB!');
   const db = client.db('requestservice');
@@ -80,7 +80,7 @@ app.get('/search', async (req, res) => {
   }
 
   try {
-    const client = await MongoClient.connect(process.env.DATABASE);
+    const client = await MongoClient.connect(process.env.DATABASE||'mongodb+srv://kuza:kuza12345@cluster0.kpotsvr.mongodb.net/?retryWrites=true&w=majority');
     const db = client.db('requestservice');
     const collection = db.collection('subcategory');
     const results = await collection.find({
